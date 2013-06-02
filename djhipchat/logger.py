@@ -11,7 +11,7 @@ Inspired by: https://gist.github.com/hugorodgerbrown/3176710
 """
 from logging import Handler
 
-from tasks import send_message
+from djhipchat import send_message
 
 
 class HipChatHandler(Handler):
@@ -41,4 +41,4 @@ class HipChatHandler(Handler):
         kwargs.update(self.kwargs)
         if record.levelname in self.colors:
             kwargs['color'] = self.colors[record.levelname]
-        send_message.delay(**kwargs)
+        send_message(**kwargs)

@@ -6,7 +6,7 @@ from django.utils.importlib import import_module
 
 
 HIPCHAT_BACKEND = getattr(settings, 'HIPCHAT_BACKEND',
-                          'djhipchat.backends.dummy.HipChatBackend')
+                          'djhipchat.backends.locmem.HipChatBackend')
 
 
 def get_backend(backend=None, **kwargs):

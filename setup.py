@@ -1,9 +1,15 @@
 #!/usr/bin/env python
 import os
+import codecs
 from setuptools import setup
 
 # allow setup.py to be run from any path
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
+
+if os.path.exists('README.rst'):
+    long_description = codecs.open('README.rst', 'r', 'utf-8').read()
+else:
+    long_description = 'See https://github.com/paulcwatts/djhipchat2'
 
 setup(
     name='djhipchat2',
@@ -26,5 +32,6 @@ setup(
         'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2.7'
-    ]
+    ],
+    long_description=long_description
 )

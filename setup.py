@@ -13,7 +13,7 @@ else:
 
 setup(
     name='djhipchat2',
-    version='0.5',
+    version='0.5.1',
     packages=[
         'djhipchat',
         'djhipchat.backends',

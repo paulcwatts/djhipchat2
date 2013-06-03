@@ -18,7 +18,7 @@ setup(
     license='BSD',
     author='Paul Watts',
     author_email='paulcwatts@gmail.com',
-    description='Configurable, asynchronous HipChat integration for Django.',
+    description='The most complete and configurable HipChat library for Django.',
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',

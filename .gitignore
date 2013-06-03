@@ -1,2 +1,4 @@
 .idea
 *.pyc
+dist
+djhipchat2.egg-info

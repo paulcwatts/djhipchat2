@@ -2,5 +2,5 @@ include AUTHORS
 include LICENSE
 include MANIFEST.in
 include README
-include README.md
+include README.rst
 include requirements.txt

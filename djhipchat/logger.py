@@ -9,6 +9,8 @@ The tokens can be set at https://{{your-account}}.hipchat.com/admin/api
 
 Inspired by: https://gist.github.com/hugorodgerbrown/3176710
 """
+from __future__ import absolute_import, unicode_literals
+
 from logging import Handler
 
 from djhipchat import send_message

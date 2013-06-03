@@ -1,11 +1,14 @@
 from __future__ import absolute_import, unicode_literals
 
+import logging
+
 from django.core.exceptions import ImproperlyConfigured
 from django.test import TestCase
 from django.test.utils import override_settings
 from django.utils.unittest import skipUnless
 
 import djhipchat
+from djhipchat.logger import HipChatHandler
 from djhipchat import get_backend
 
 try:
@@ -87,3 +90,41 @@ class CeleryTest(TestCase):
             'color': 'yellow'
         }
         self.assertEqual([expected], djhipchat.sent_messages)
+
+
+@override_settings(HIPCHAT_BACKEND=_backend('locmem'))
+class LoggerTest(TestCase):
+    def test_logger_basic(self):
+        """
+        Very simple test of the logger and color selection.
+        """
+        logger = logging.getLogger("logger.test")
+        logger.addHandler(HipChatHandler("1234", sender='Test', colors={
+            'ERROR': 'red',
+            'INFO': 'grey'
+        }))
+        logger.setLevel(logging.INFO)
+
+        djhipchat.sent_messages = []
+        logger.info("Message: %d", 5)
+        logger.error("Error: %s", "hello")
+
+        expected1 = {
+            'room_id': '1234',
+            'message': 'Message: 5',
+            'from': 'Test',
+            'format': 'json',
+            'message_format': 'text',
+            'notify': 0,
+            'color': 'grey'
+        }
+        expected2 = {
+            'room_id': '1234',
+            'message': 'Error: hello',
+            'from': 'Test',
+            'format': 'json',
+            'message_format': 'text',
+            'notify': 0,
+            'color': 'red'
+        }
+        self.assertEqual([expected1, expected2], djhipchat.sent_messages)

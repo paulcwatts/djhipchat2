@@ -5,6 +5,7 @@ The most complete and configurable HipChat library for Django.
 * Configurable backend support, including local memory for testing
 * Logging integration
 * Out-of-the-box integration with [celery](http://www.celeryproject.org/) for asynchronous sending
+* Management command
 * Testing
 
 ## Installation
@@ -67,6 +68,16 @@ LOGGING = {
 ```
 
 This is inspired by: https://gist.github.com/hugorodgerbrown/3176710
+
+## Management command
+
+This app provides a management command to easily send a message to the configured backend. The usage is simple:
+
+```python manage.py hipchat <room_id> <message>```
+
+Options are available at:
+
+```python manage.py help hipchat```
 
 ## Configuration
 

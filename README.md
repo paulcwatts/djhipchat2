@@ -17,7 +17,16 @@ The most complete and configurable HipChat library for Django.
 
 ### djhipchat.send_message
 
-This will send a HipChat message using the default backend. The parameters are:
+This will send a HipChat message using the default backend. The parameters mirror those of the HipChat messaging API, defined here: https://www.hipchat.com/docs/api/method/rooms/message. 
+
+These are the parameters:
+
+* `room_id`: The ID of the HipChat room to send to. Room IDs can be found here: https://{{your-account}}.hipchat.com/rooms/ids
+* `sender`: The sender of the message. Must be less than 15 characters long. May contain letters, numbers, -, _, and spaces. (Note: in the HipChat API this is specified as `from`. It's been changed so it's not a Python keyword.)
+* `message`: The text or HTML of the message.
+* `message_format`: Should be `text` or `html`. The default is `html`
+* `notify`: Should be `True` if the message should trigger a notification in the room. The default is `False`
+* `color`: The color of the message. One of "yellow", "red", "green", "purple", "gray", or "random". The default is "yellow".
 
 ### djhipchat.get_backend
 

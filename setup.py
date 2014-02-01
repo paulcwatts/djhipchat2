@@ -18,7 +18,8 @@ setup(
         'djhipchat',
         'djhipchat.backends',
         'djhipchat.management',
-        'djhipchat.management.commands'
+        'djhipchat.management.commands',
+        'djhipchat.runtests'
     ],
     url='https://github.com/paulcwatts/djhipchat2',
     license='BSD',

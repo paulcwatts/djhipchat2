@@ -3,3 +3,4 @@
 dist
 djhipchat2.egg-info
 build
+.tox/

@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
+from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 from django.test import TestCase
 from django.test.utils import override_settings
@@ -10,11 +11,6 @@ from django.utils.unittest import skipUnless
 import djhipchat
 from djhipchat.logger import HipChatHandler
 from djhipchat import get_backend
-
-try:
-    from djhipchat.tasks import send_message as send_message_task
-except (ImportError, ImproperlyConfigured):
-    send_message_task = None
 
 
 def _backend(name):
@@ -70,7 +66,7 @@ class BackendTest(TestCase):
             self.assertEqual('Django', djhipchat.sent_messages[0]['from'])
 
 
-@skipUnless(send_message_task, "requires celery")
+@skipUnless(getattr(settings, 'DJHIPCHAT_CELERY_TESTS', False), "requires celery")
 @override_settings(HIPCHAT_BACKEND=_backend('celery'),
                    HIPCHAT_CELERY_BACKEND=_backend('locmem'))
 class CeleryTest(TestCase):

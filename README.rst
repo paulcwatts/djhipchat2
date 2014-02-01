@@ -2,6 +2,9 @@
 djhipchat2: The most complete HipChat integration for Django
 ============================================================
 
+.. image:: https://travis-ci.org/paulcwatts/djhipchat2.png?branch=master   
+   :target: https://travis-ci.org/paulcwatts/djhipchat2
+
 djhipchat2 is the Swiss Army knife for HipChat integration. It provides:
 
 - Configurable backend support, including local memory for testing

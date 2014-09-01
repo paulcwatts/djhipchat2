@@ -29,6 +29,15 @@ INSTALLED_APPS = [
     'djhipchat',
 ]
 
+# Clear a warning on Django 1.7
+MIDDLEWARE_CLASSES = (
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+)
+
 DJHIPCHAT_CELERY_TESTS = bool(os.environ.get('ENABLE_CELERY_TESTS', False))
 if DJHIPCHAT_CELERY_TESTS:
     INSTALLED_APPS += ['djcelery']

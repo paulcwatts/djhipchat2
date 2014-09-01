@@ -47,6 +47,9 @@ def main():
     if django.VERSION[0] == 1 and django.VERSION[1] < 6:
         test_module_name = 'djhipchat'
 
+    if django.VERSION[0] == 1 and django.VERSION[1] >= 7:
+        django.setup()
+
     failures = test_runner.run_tests([test_module_name + test_case])
 
     sys.exit(failures)
